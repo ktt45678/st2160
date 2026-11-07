@@ -4,6 +4,7 @@ out-tsc/
 .angular/
 coverage/
 *.tsbuildinfo
+.vitest/
 .vitest-attachments/
 __screenshots__/
 test-suite/results/
