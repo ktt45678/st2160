@@ -24,4 +24,5 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - run: node scripts/fetch-test-assets.ts
       - run: bash scripts/check.sh

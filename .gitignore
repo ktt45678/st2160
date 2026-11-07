@@ -9,3 +9,4 @@ __screenshots__/
 test-suite/results/
 .DS_Store
 Thumbs.db
+test-suite/.cache/

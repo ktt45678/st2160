@@ -1,0 +1,33 @@
+{
+  "ffmpeg": {
+    "version": "N-126904-gbfaef02d16-20260927",
+    "libass": "f61db567e6593df3470e91594bcd4ad2d0473aff",
+    "freetype": "2.14.3",
+    "harfbuzz": "14.5.0",
+    "fribidi": "1.0.17",
+    "build": "https://github.com/BtbN/FFmpeg-Builds (win64-gpl, 2026-09-27)"
+  },
+  "cases": {
+    "hebrew-advances": {
+      "width": 640,
+      "height": 200,
+      "fonts": [
+        "NotoSansHebrew-Regular.ttf"
+      ],
+      "timesMs": [
+        0,
+        4999
+      ]
+    },
+    "lato-kerning-off": {
+      "width": 640,
+      "height": 200,
+      "fonts": [
+        "Lato-Regular.ttf"
+      ],
+      "timesMs": [
+        0
+      ]
+    }
+  }
+}

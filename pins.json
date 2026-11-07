@@ -1,18 +1,57 @@
 {
   "$comment": "Non-npm pins. npm versions live in the catalog in pnpm-workspace.yaml.",
   "references": {
-    "libass": { "repo": "https://github.com/libass/libass", "commit": "2a8a567" },
+    "libass": {
+      "repo": "https://github.com/libass/libass",
+      "commit": "2a8a567"
+    },
     "harfrust": {
       "repo": "https://github.com/harfbuzz/harfrust",
       "commit": "e55117d",
       "version": "0.15.0"
     },
-    "fontations": { "repo": "https://github.com/googlefonts/fontations", "commit": "e5e7f43" },
-    "unicode-bidi": { "repo": "https://github.com/servo/unicode-bidi", "commit": "9a8c7b0" },
-    "jassub": { "repo": "https://github.com/ThaUnknown/jassub", "commit": "ed0edc7" },
-    "media-captions": { "repo": "https://github.com/ktt45678/media-captions", "commit": "7e1e0bd" },
-    "video.js": { "repo": "https://github.com/videojs/video.js", "commit": "e73e903" },
-    "subframe": { "repo": "https://github.com/wiedymi/subframe", "commit": "4800f95" },
-    "subforge": { "repo": "https://github.com/wiedymi/subforge", "commit": "d5ee984" }
+    "fontations": {
+      "repo": "https://github.com/googlefonts/fontations",
+      "commit": "e5e7f43"
+    },
+    "unicode-bidi": {
+      "repo": "https://github.com/servo/unicode-bidi",
+      "commit": "9a8c7b0"
+    },
+    "jassub": {
+      "repo": "https://github.com/ThaUnknown/jassub",
+      "commit": "ed0edc7"
+    },
+    "media-captions": {
+      "repo": "https://github.com/ktt45678/media-captions",
+      "commit": "7e1e0bd"
+    },
+    "video.js": {
+      "repo": "https://github.com/videojs/video.js",
+      "commit": "e73e903"
+    },
+    "subframe": {
+      "repo": "https://github.com/wiedymi/subframe",
+      "commit": "4800f95"
+    },
+    "subforge": {
+      "repo": "https://github.com/wiedymi/subforge",
+      "commit": "d5ee984"
+    }
+  },
+  "ffmpeg": {
+    "$comment": "Native libass oracle. Windows build from BtbN/FFmpeg-Builds; check `ffmpeg -version` and the libass commit in the verbose log.",
+    "version": "N-126904-gbfaef02d16-20260927",
+    "build": "https://github.com/BtbN/FFmpeg-Builds (win64-gpl, 2026-09-27)",
+    "libass": "f61db567e6593df3470e91594bcd4ad2d0473aff",
+    "freetype": "2.14.3",
+    "harfbuzz": "14.5.0",
+    "fribidi": "1.0.17"
+  },
+  "assets": {
+    "libass-tests": {
+      "repo": "https://github.com/libass/libass-tests",
+      "commit": "205c63e601ad21f195528d1b1f112d9c542064d3"
+    }
   }
 }
