@@ -1,0 +1,27 @@
+{
+  "name": "@st2160/angular-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "build": "ng build angular",
+    "watch": "ng build angular --watch --configuration development",
+    "test": "ng test angular --watch=false"
+  },
+  "devDependencies": {
+    "@angular/build": "catalog:",
+    "@angular/cli": "catalog:",
+    "@angular/common": "catalog:",
+    "@angular/compiler": "catalog:",
+    "@angular/compiler-cli": "catalog:",
+    "@angular/core": "catalog:",
+    "@angular/platform-browser": "catalog:",
+    "@st2160/core": "workspace:*",
+    "jsdom": "catalog:",
+    "ng-packagr": "catalog:",
+    "rxjs": "catalog:",
+    "tslib": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}
