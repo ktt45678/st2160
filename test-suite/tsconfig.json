@@ -4,8 +4,16 @@
     "rootDir": "src",
     "outDir": "dist",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "types": ["node"]
+    "types": ["node"],
+    "rewriteRelativeImportExtensions": true
   },
   "include": ["src"],
-  "references": [{ "path": "../packages/core" }, { "path": "../packages/text" }]
+  "references": [
+    {
+      "path": "../packages/core"
+    },
+    {
+      "path": "../packages/text"
+    }
+  ]
 }

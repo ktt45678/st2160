@@ -6,5 +6,11 @@
   "dependencies": {
     "@st2160/core": "workspace:*",
     "@st2160/text": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/pngjs": "catalog:",
+    "harfbuzzjs": "catalog:",
+    "jassub": "catalog:",
+    "pngjs": "catalog:"
   }
 }

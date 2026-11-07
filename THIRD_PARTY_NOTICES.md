@@ -6,7 +6,10 @@ st2160 is MIT licensed (see `LICENSE`). Parts of it are ported from the projects
 
 ISC License. Copyright (C) 2006-2016 libass contributors. https://github.com/libass/libass
 
-Ported files: none yet.
+Ported files (test tooling, not published):
+
+- `test-suite/src/compare.ts`: the `compare` metric from `compare/compare.c` and the PNG conversion from `compare/image.c`.
+- `test-suite/src/blend.ts` (`blendLibassCompare`): `blend_image` and `blend_all` from `compare/compare.c`.
 
 ## HarfRust and HarfBuzz
 
@@ -51,6 +54,16 @@ media-captions: MIT License. https://github.com/vidstack/media-captions (fork: h
 vtt.js: Apache License 2.0. https://github.com/mozilla/vtt.js
 
 Ported files: none yet.
+
+## FFmpeg
+
+LGPL 2.1 or later. https://ffmpeg.org
+
+`test-suite/src/blend.ts` (`blendFfmpegRgb24`) reproduces the integer blend arithmetic of `ff_blend_mask` in `libavfilter/drawutils.c`, so candidates composite the same way as the native references. It is test tooling and is not published. No package contains FFmpeg code.
+
+## Test fonts
+
+The fonts in `test-suite/fonts/files` and the one fetched into `test-suite/.cache/fonts` are under the SIL Open Font License 1.1. Each font's license text is in `test-suite/fonts/licenses`, and `test-suite/fonts/manifest.json` records its source. They are test fixtures and are not published.
 
 ## Slug
 
