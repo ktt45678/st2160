@@ -1,0 +1,21 @@
+{
+  "name": "@st2160/font-index",
+  "version": "0.0.0",
+  "description": "Node CLI that builds st2160 font catalog indexes.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@st2160/text": "workspace:*"
+  }
+}

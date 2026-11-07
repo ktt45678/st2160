@@ -1,0 +1,10 @@
+{
+  "name": "@st2160/test-suite",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@st2160/core": "workspace:*",
+    "@st2160/text": "workspace:*"
+  }
+}

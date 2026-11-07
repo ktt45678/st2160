@@ -1,0 +1,21 @@
+{
+  "name": "@st2160/shaper-harfbuzz",
+  "version": "0.0.0",
+  "description": "Opt-in HarfBuzz (WASM) fallback shaper for st2160.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@st2160/text": "workspace:*"
+  }
+}

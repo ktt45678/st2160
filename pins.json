@@ -1,0 +1,18 @@
+{
+  "$comment": "Non-npm pins. npm versions live in the catalog in pnpm-workspace.yaml.",
+  "references": {
+    "libass": { "repo": "https://github.com/libass/libass", "commit": "2a8a567" },
+    "harfrust": {
+      "repo": "https://github.com/harfbuzz/harfrust",
+      "commit": "e55117d",
+      "version": "0.15.0"
+    },
+    "fontations": { "repo": "https://github.com/googlefonts/fontations", "commit": "e5e7f43" },
+    "unicode-bidi": { "repo": "https://github.com/servo/unicode-bidi", "commit": "9a8c7b0" },
+    "jassub": { "repo": "https://github.com/ThaUnknown/jassub", "commit": "ed0edc7" },
+    "media-captions": { "repo": "https://github.com/ktt45678/media-captions", "commit": "7e1e0bd" },
+    "video.js": { "repo": "https://github.com/videojs/video.js", "commit": "e73e903" },
+    "subframe": { "repo": "https://github.com/wiedymi/subframe", "commit": "4800f95" },
+    "subforge": { "repo": "https://github.com/wiedymi/subforge", "commit": "d5ee984" }
+  }
+}

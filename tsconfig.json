@@ -1,0 +1,12 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/text" },
+    { "path": "packages/core" },
+    { "path": "packages/element" },
+    { "path": "packages/videojs" },
+    { "path": "packages/shaper-harfbuzz" },
+    { "path": "packages/font-index" },
+    { "path": "test-suite" }
+  ]
+}

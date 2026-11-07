@@ -1,0 +1,22 @@
+{
+  "name": "@st2160/core",
+  "version": "0.0.0",
+  "description": "Subtitle engine for HTML5 video: ASS/SSA with libass parity on the GPU, SRT and WebVTT captions.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./worker": "./dist/worker/worker.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@st2160/text": "workspace:*"
+  }
+}

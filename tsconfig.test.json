@@ -1,0 +1,27 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node"],
+    "paths": {
+      "@st2160/core": ["./packages/core/src/index.ts"],
+      "@st2160/text": ["./packages/text/src/index.ts"],
+      "@st2160/element": ["./packages/element/src/index.ts"],
+      "@st2160/videojs": ["./packages/videojs/src/index.ts"],
+      "@st2160/shaper-harfbuzz": ["./packages/shaper-harfbuzz/src/index.ts"],
+      "@st2160/font-index": ["./packages/font-index/src/index.ts"]
+    }
+  },
+  "include": [
+    "packages/*/test/**/*.ts",
+    "test-suite/test/**/*.ts",
+    "scripts/**/*.ts",
+    "vitest.config.ts"
+  ]
+}

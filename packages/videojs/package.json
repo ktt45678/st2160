@@ -1,0 +1,22 @@
+{
+  "name": "@st2160/videojs",
+  "version": "0.0.0",
+  "description": "Video.js 10 integration for st2160 subtitles.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@st2160/core": "workspace:*",
+    "@st2160/element": "workspace:*"
+  }
+}
