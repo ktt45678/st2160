@@ -53,7 +53,16 @@ Ported files: none yet.
 media-captions: MIT License. https://github.com/vidstack/media-captions (fork: https://github.com/ktt45678/media-captions)
 vtt.js: Apache License 2.0. https://github.com/mozilla/vtt.js
 
-Ported files: none yet.
+Ported files:
+
+- `packages/core/src/captions/vtt-settings.ts`, `vtt-parser.ts`, `vtt-tokenizer.ts`: WebVTT header, region, cue timings/settings and cue text parsing adapted from media-captions and the W3C WebVTT specification.
+- `packages/core/src/captions/srt-parser.ts` (`applyNumpadAlignment`): `{\anN}` alignment mapping from `@ktt45678/media-captions` commit `7e1e0bd`.
+
+## WHATWG HTML and web-platform-tests
+
+HTML character reference table (`packages/core/src/captions/html-entities-data.ts`) generated from https://html.spec.whatwg.org/entities.json under CC BY 4.0 (Copyright WHATWG).
+
+WebVTT parser test fixtures under `packages/core/test/fixtures/wpt` (not published) from https://github.com/web-platform-tests/wpt under the 3-Clause BSD License (Copyright web-platform-tests contributors).
 
 ## FFmpeg
 

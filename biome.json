@@ -16,6 +16,7 @@
       "!**/*.scss",
       "!**/*.md",
       "!scripts/test/fixtures",
+      "!packages/*/test/fixtures",
       "!test-suite/fixtures",
       "!test-suite/results"
     ]

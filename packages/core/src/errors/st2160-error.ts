@@ -4,7 +4,8 @@ export type St2160ErrorCode =
   | 'invalid-state'
   | 'not-supported'
   | 'aborted'
-  | 'internal';
+  | 'internal'
+  | 'parse-error';
 
 export interface St2160ErrorOptions extends ErrorOptions {
   /** Machine-readable details, safe to log. */
