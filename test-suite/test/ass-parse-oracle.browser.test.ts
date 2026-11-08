@@ -3,6 +3,29 @@ import { describe, expect, it } from 'vitest';
 import { commands, server } from 'vitest/browser';
 import { parseWithLibass } from '../src/browser/jassub-oracle.ts';
 
+/** JASSUB is built with -ffast-math, so its ScaleX/ScaleY may differ from libass by one ulp. */
+function expectStylesMatch(
+  ours: readonly object[],
+  oracle: readonly object[],
+  label: string,
+): void {
+  expect(ours.length, label).toBe(oracle.length);
+  const aligned = ours.map((row, i) => {
+    const copy: Record<string, unknown> = { ...row };
+    const want = oracle[i] as Record<string, unknown>;
+    for (const key of ['ScaleX', 'ScaleY']) {
+      const a = copy[key] as number;
+      const b = want[key] as number;
+      expect(Math.abs(a - b), `${label} style ${i} ${key}`).toBeLessThanOrEqual(
+        Number.EPSILON * Math.max(1, Math.abs(b)),
+      );
+      copy[key] = b;
+    }
+    return copy;
+  });
+  expect(aligned, label).toEqual(oracle);
+}
+
 const edgeCaseScripts: { readonly name: string; readonly script: string }[] = [
   {
     name: 'v4-ssa-styles-and-events',
@@ -122,7 +145,7 @@ describe.runIf(server.browser === 'chromium')('ASS parser vs JASSUB libass oracl
     it(`matches JASSUB field-by-field on ${item.name}`, async () => {
       const oracle = await parseWithLibass(item.script);
       const track = parseAss(item.script);
-      expect(track.styles.toArray()).toEqual(oracle.styles);
+      expectStylesMatch(track.styles.toArray(), oracle.styles, item.name);
       expect(track.events.toArray(true)).toEqual(oracle.events);
     });
   }
@@ -134,7 +157,7 @@ describe.runIf(server.browser === 'chromium')('ASS parser vs JASSUB libass oracl
       checked++;
       const oracle = await parseWithLibass(script);
       const track = parseAss(script);
-      expect(track.styles.toArray(), `styles in ${relPath}`).toEqual(oracle.styles);
+      expectStylesMatch(track.styles.toArray(), oracle.styles, `styles in ${relPath}`);
       expect(track.events.toArray(true), `events in ${relPath}`).toEqual(oracle.events);
     }
     expect(checked).toBe(36);
@@ -152,7 +175,7 @@ describe.runIf(server.browser === 'chromium')('ASS parser vs JASSUB libass oracl
       }
       const oracle = await parseWithLibass(script);
       const track = parseAss(script);
-      expect(track.styles.toArray(), `styles in ${relPath}`).toEqual(oracle.styles);
+      expectStylesMatch(track.styles.toArray(), oracle.styles, `styles in ${relPath}`);
       expect(track.events.toArray(true), `events in ${relPath}`).toEqual(oracle.events);
     }
   });

@@ -520,8 +520,9 @@ class AssParserSession {
     if (this.trackType === ASS_TRACK_TYPE_SSA) {
       setStyleAlpha(style, ssaAlpha, 0x80);
     }
-    style.ScaleX = Math.max(style.ScaleX, 0.0) * 0.01;
-    style.ScaleY = Math.max(style.ScaleY, 0.0) * 0.01;
+    // process_style divides; JASSUB's -ffast-math build multiplies by 0.01 instead.
+    style.ScaleX = Math.max(style.ScaleX, 0.0) / 100;
+    style.ScaleY = Math.max(style.ScaleY, 0.0) / 100;
     style.Spacing = Math.max(style.Spacing, 0.0);
     style.Outline = Math.max(style.Outline, 0.0);
     style.Shadow = Math.max(style.Shadow, 0.0);

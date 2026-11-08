@@ -296,6 +296,21 @@ Dialogue: 0,0:00:00.00,0:00:01.00,Default,,0,0,0,,Legacy ffmpeg
     expect(parseAss(legacyFfmpegScript).info.scaledBorderAndShadow).toBe(1);
   });
 
+  it('divides ScaleX and ScaleY by 100 like process_style, not by multiplying by 0.01', () => {
+    const script = `[Script Info]
+ScriptType: v4.00+
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, ScaleX, ScaleY
+Style: Narrow,Arial,20,95,57
+
+[Events]
+`;
+    const track = parseAss(script);
+    expect(track.styles.scaleX[1]).toBe(0.95);
+    expect(track.styles.scaleY[1]).toBe(0.57);
+  });
+
   it('looks up styles with leading asterisks, case-insensitive Default, and backwards search', () => {
     const warnings: ParseWarningEvent[] = [];
     const script = `[Script Info]
