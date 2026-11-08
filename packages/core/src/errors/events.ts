@@ -6,8 +6,16 @@ export interface ErrorEvent {
   readonly error: St2160Error;
 }
 
+export interface ParseWarningEvent {
+  readonly type: 'parse-warning';
+  readonly line: number;
+  readonly code: string;
+  readonly message: string;
+}
+
 export interface St2160EventMap {
   error: ErrorEvent;
+  'parse-warning': ParseWarningEvent;
 }
 
 export type St2160EventType = keyof St2160EventMap;

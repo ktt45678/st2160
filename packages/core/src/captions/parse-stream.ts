@@ -192,6 +192,9 @@ export async function parseCaptionStream(
     await drainQueue();
     if (vtt !== null) vtt.finish();
     else srt?.finish();
+    if (performance.now() - sliceStart >= budgetMs) {
+      await yieldToMacrotask();
+    }
   } catch (err) {
     await reader.cancel(err).catch(() => {});
     throw err;

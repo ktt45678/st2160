@@ -143,13 +143,21 @@ export function libassTrackCounts(
   script: string,
   fonts: readonly string[] = [],
 ): { styles: number; events: number } {
-  const run = renderWithLibass({
-    script,
-    fonts,
-    width: 16,
-    height: 16,
-    timesMs: [0],
-    allowFallback: true,
-  });
-  return { styles: run.styles, events: run.events };
+  const problem = ffmpegProblem();
+  if (problem) throw new Error(problem);
+  const dir = mkdtempSync(join(tmpdir(), 'st2160-cnt-'));
+  try {
+    copyFileSync(script, join(dir, 'script.ass'));
+    prepareFontsDir(fonts, join(dir, 'fonts'));
+    const run = runFfmpeg(
+      dir,
+      { script, fonts, width: 16, height: 16, timesMs: [0], allowFallback: true },
+      0,
+    );
+    const added = /Added subtitle file: .* \((\d+) styles, (\d+) events\)/.exec(run.log);
+    if (!added) throw new Error(`ffmpeg log has no "Added subtitle file" line for ${script}`);
+    return { styles: Number(added[1]), events: Number(added[2]) };
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 }

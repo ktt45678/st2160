@@ -31,6 +31,11 @@ export default defineConfig({
       },
       ...browsers.map((browser) => ({
         extends: true as const,
+        server: {
+          fs: {
+            allow: [fileURLToPath(new URL('..', import.meta.url))],
+          },
+        },
         test: {
           name: `browser-${browser}`,
           include: ['packages/*/test/**/*.browser.test.ts', 'test-suite/test/**/*.browser.test.ts'],

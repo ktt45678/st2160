@@ -6,6 +6,11 @@ st2160 is MIT licensed (see `LICENSE`). Parts of it are ported from the projects
 
 ISC License. Copyright (C) 2006-2016 libass contributors. https://github.com/libass/libass
 
+Ported files (published in `@st2160/core`):
+
+- `packages/core/src/ass/numbers.ts`, `model.ts`, `parser.ts`, `uuencode.ts`: ASS/SSA script, style, event, number, color, timecode and uuencoded font parsing ported from `libass/ass.c`, `libass/ass_utils.c`, `libass/ass_utils.h` and `libass/ass_string.c`.
+- `packages/core/src/ass/strtod.ts`: `ass_strtod` ported from `libass/ass_strtod.c` (Tcl-derived `strtod`; BSD-style license, Copyright (c) 1988-1993 The Regents of the University of California, Copyright (c) 1994 Sun Microsystems, Inc., Copyright (c) 2016 Oleg Oshmyan).
+
 Ported files (test tooling, not published):
 
 - `test-suite/src/compare.ts`: the `compare` metric from `compare/compare.c` and the PNG conversion from `compare/image.c`.

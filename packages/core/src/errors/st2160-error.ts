@@ -5,7 +5,8 @@ export type St2160ErrorCode =
   | 'not-supported'
   | 'aborted'
   | 'internal'
-  | 'parse-error';
+  | 'parse-error'
+  | 'ass-invalid-script';
 
 export interface St2160ErrorOptions extends ErrorOptions {
   /** Machine-readable details, safe to log. */

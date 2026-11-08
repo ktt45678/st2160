@@ -1,5 +1,6 @@
 export type {
   ErrorEvent,
+  ParseWarningEvent,
   St2160Event,
   St2160EventListener,
   St2160EventMap,

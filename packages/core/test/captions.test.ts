@@ -540,11 +540,12 @@ describe('Streaming caption parser & 50 MB non-blocking gate', () => {
     try {
       const result = await parseCaptionStream(stream, {
         format: 'vtt',
-        yieldIntervalMs: 10,
+        yieldIntervalMs: 5,
         onCue: () => {
           sent++;
         },
       });
+      clearInterval(ticker);
       expect(sent).toBe(totalChunks * blocksPerChunk);
       expect(result.cues.length).toBe(sent);
       expect(maxSliceMs).toBeLessThan(50);

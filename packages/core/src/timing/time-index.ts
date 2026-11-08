@@ -78,9 +78,38 @@ export class TimeIndex {
     this.maxActive = maxOverlap(ids, starts, ends);
   }
 
+  /** Ranks ids by `(primary[id], secondary[id], id)` for `queryRanked`. Built once at load. */
+  static rankBy(primary: Int32Array, secondary: Int32Array): Int32Array {
+    const ids = Array.from({ length: primary.length }, (_, i) => i);
+    ids.sort(
+      (a, b) =>
+        (primary[a] as number) - (primary[b] as number) ||
+        (secondary[a] as number) - (secondary[b] as number) ||
+        a - b,
+    );
+    const rank = new Int32Array(primary.length);
+    for (let r = 0; r < ids.length; r++) rank[ids[r] as number] = r;
+    return rank;
+  }
+
   /** Writes ids active at `time` into `out`, ascending, and returns the count. */
   /** @frameLoop */
   query(time: number, out: Int32Array): number {
+    const n = this.collect(time, out);
+    sortIds(out, n, null);
+    return n;
+  }
+
+  /** Writes ids active at `time` into `out` ordered by `rank[id]`, and returns the count. */
+  /** @frameLoop */
+  queryRanked(time: number, rank: Int32Array, out: Int32Array): number {
+    const n = this.collect(time, out);
+    sortIds(out, n, rank);
+    return n;
+  }
+
+  /** @frameLoop */
+  private collect(time: number, out: Int32Array): number {
     if (this.size === 0 || Number.isNaN(time)) return 0;
     const capacity = out.length;
     let n = 0;
@@ -104,17 +133,46 @@ export class TimeIndex {
         node = this.right[node] as number;
       }
     }
-    for (let i = 1; i < n; i++) {
-      const id = out[i] as number;
-      let j = i - 1;
-      while (j >= 0 && (out[j] as number) > id) {
-        out[j + 1] = out[j] as number;
-        j--;
-      }
-      out[j + 1] = id;
-    }
     return n;
   }
+}
+
+/** In-place heapsort of `ids[0..n)` by `rank[id]`, or by id when `rank` is null. */
+/** @frameLoop */
+function sortIds(ids: Int32Array, n: number, rank: Int32Array | null): void {
+  for (let i = (n >> 1) - 1; i >= 0; i--) siftDown(ids, i, n, rank);
+  for (let last = n - 1; last > 0; last--) {
+    const top = ids[0] as number;
+    ids[0] = ids[last] as number;
+    ids[last] = top;
+    siftDown(ids, 0, last, rank);
+  }
+}
+
+/** @frameLoop */
+function siftDown(ids: Int32Array, root: number, n: number, rank: Int32Array | null): void {
+  const id = ids[root] as number;
+  const key = rank === null ? id : (rank[id] as number);
+  let i = root;
+  while (true) {
+    let child = 2 * i + 1;
+    if (child >= n) break;
+    let childId = ids[child] as number;
+    let childKey = rank === null ? childId : (rank[childId] as number);
+    if (child + 1 < n) {
+      const rightId = ids[child + 1] as number;
+      const rightKey = rank === null ? rightId : (rank[rightId] as number);
+      if (rightKey > childKey) {
+        child++;
+        childId = rightId;
+        childKey = rightKey;
+      }
+    }
+    if (childKey <= key) break;
+    ids[i] = childId;
+    i = child;
+  }
+  ids[i] = id;
 }
 
 function maxOverlap(sortedByStart: number[], starts: Float64Array, ends: Float64Array): number {
