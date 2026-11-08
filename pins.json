@@ -40,9 +40,9 @@
     }
   },
   "ffmpeg": {
-    "$comment": "Native libass oracle. Windows build from BtbN/FFmpeg-Builds; check `ffmpeg -version` and the libass commit in the verbose log.",
+    "$comment": "Native libass oracle. Windows build from vghuy17ck1/FFmpeg-Builds-SVT-AV1-Tritium; check `ffmpeg -version` and the libass commit in the verbose log.",
     "version": "N-126904-gbfaef02d16-20260927",
-    "build": "https://github.com/BtbN/FFmpeg-Builds (win64-gpl, 2026-09-27)",
+    "build": "https://github.com/vghuy17ck1/FFmpeg-Builds-SVT-AV1-Tritium/releases (2026-09-27)",
     "libass": "f61db567e6593df3470e91594bcd4ad2d0473aff",
     "freetype": "2.14.3",
     "harfbuzz": "14.5.0",
