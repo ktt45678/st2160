@@ -5,7 +5,7 @@
     "freetype": "2.14.3",
     "harfbuzz": "14.5.0",
     "fribidi": "1.0.17",
-    "build": "https://github.com/BtbN/FFmpeg-Builds (win64-gpl, 2026-09-27)"
+    "build": "https://github.com/vghuy17ck1/FFmpeg-Builds-SVT-AV1-Tritium/releases (2026-09-27)"
   },
   "cases": {
     "hebrew-advances": {
